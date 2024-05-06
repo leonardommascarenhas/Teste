@@ -46,9 +46,11 @@ const HotelList = ({ city, rooms }: HotelListProps) => {
         }}
       >
         {filteredCards.map((card, index) => (
-          <SwiperSlide style={{ height: "auto" }}>
+          <SwiperSlide
+            key={index}
+            style={{ height: "auto" }}
+          >
             <HotelCard
-              key={index}
               city={card.City}
               title={card.Title}
               author={card.Author}
