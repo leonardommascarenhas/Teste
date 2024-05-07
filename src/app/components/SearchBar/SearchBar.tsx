@@ -75,13 +75,14 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
   return (
     <div className="flex justify-center bg-whitesh md:bg-transparent">
       <form
-        className="flex flex-col md:flex-row md:items-center md:bg-white py-4 px-3 md:px-12 rounded-full gap-4 w-screen sm:w-3/5 relative"
+        className="flex flex-col md:flex-row md:items-center  md:bg-white py-4 px-3 md:pl-12 rounded-full gap-4 w-screen sm:w-2/3 2xl:w-1/2 min-w-32 relative"
         onSubmit={(e) => {
           e.preventDefault();
+          setShowAddressesList(false);
           onSubmit(formData.city, formData.selectedRooms);
         }}
       >
-        <div className="md:w-3/4 border border-gray-400 p-4 rounded-2xl mx-3 md:border-0 md:p-0 md:rounded-none md:mx-0 ">
+        <div className="md:w-3/5 border border-gray-400 p-4 rounded-2xl mx-3 md:border-0 md:p-0 md:rounded-none md:mx-0 ">
           <label
             htmlFor="localization"
             className="flex items-center gap-1.5 text-dark-100 mb-1"
@@ -98,6 +99,7 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
             aria-label="Localização"
             value={formData.city}
             onChange={handleLocationChange}
+            required
           />
         </div>
         {formData.city && showAddressesList && (
@@ -106,7 +108,7 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
             onAddressClick={handleAddressClick}
           />
         )}
-        <div className=" border border-gray-400 p-4 rounded-2xl mx-3 md:border-0 md:p-0 md:rounded-none md:mx-3">
+        <div className=" border border-gray-400 p-4 rounded-2xl mx-3 md:border-0 md:p-0 md:rounded-none md:mx-0 md:w-1/4">
           <label
             htmlFor="rooms"
             className="flex items-center gap-1.5 text-dark-100 mb-1"
@@ -117,7 +119,7 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
           <select
             id="rooms"
             name="rooms"
-            className="flex text-dark-100 border-b border-gray-300 focus:outline-none focus:border-blue-500 w-full bg-transparent"
+            className="mt-0.5 flex text-dark-100 border-b border-gray-300 focus:outline-none p-1 focus:border-blue-500 w-full bg-transparent "
             aria-label="Número de Quartos"
             value={formData.selectedRooms.toString()}
             onChange={handleRoomsChange}
@@ -130,7 +132,7 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
         </div>
         <button
           type="submit"
-          className="bg-orange-500 text-white rounded-full px-4 py-2"
+          className="bg-orange-500 text-white rounded-full p-4 hover:bg-orange-700"
         >
           Search
         </button>

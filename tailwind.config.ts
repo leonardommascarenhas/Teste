@@ -11,6 +11,10 @@ const config: Config = {
       fontFamily: {
         roboto: ["var(--font-roboto)"],
       },
+      backgroundImage: {
+        bannerInicioMobile: "url('/imgs/BannerInicioMobile.png')",
+        bannerInicio: "url('/imgs/BannerInicio.png')",
+      },
       colors: {
         dark: {
           100: "#393B3D",

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useEffect } from "react";
-
+import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
 import HotelCard from "./Cards/HotelCard";
 import flats from "../../../../_data/flats.json";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
 
 type HotelListProps = {
@@ -19,7 +20,7 @@ const HotelList = ({ city, rooms }: HotelListProps) => {
   );
 
   useEffect(() => {
-    if (filteredCards.length > 0 && filteredCards[0].City.toLowerCase() !== city.toLowerCase()) {
+    if (filteredCards.length > 0 && filteredCards[0].City.toLowerCase() !== city.toLowerCase() && city) {
       setSuggestion(filteredCards[0].City);
     } else {
       setSuggestion(null);
@@ -27,28 +28,44 @@ const HotelList = ({ city, rooms }: HotelListProps) => {
   }, [city, filteredCards]);
 
   return (
-    <div>
+    <div className="p-12 md:p-24">
       {suggestion && (
-        <p>
-          Você quis dizer <span className="text-blue-200 underline underline-offset-2">{suggestion}</span> ?
+        <p className="mb-4">
+          Mostrando resultados de: <span className="text-blue-400 underline underline-offset-2 mb-4">{suggestion}</span>{" "}
         </p>
       )}
-      <h3>
-        Novos Anúncios em <span className="text-orange-500">{suggestion ? suggestion : city}</span>
-      </h3>
+      <div className="flex justify-between items-center">
+        <h3 className="text-lg md:text-xl lg:text-2xl">
+          Novos Anúncios em <span className="text-orange-500">{suggestion ? suggestion : city}</span>
+        </h3>
+        <div className="flex gap-2 mt-1">
+          <button className="custom-prev">
+            <IoIosArrowDropleft size={24} />
+          </button>
+          <button className="custom-next">
+            <IoIosArrowDropright size={24} />
+          </button>
+        </div>
+      </div>
       <Swiper
+        modules={[Navigation]}
         breakpoints={{
           320: { slidesPerView: 1, spaceBetween: 10 },
-          480: { slidesPerView: 2, spaceBetween: 20 },
-          640: { slidesPerView: 3, spaceBetween: 30 },
-          768: { slidesPerView: 4, spaceBetween: 40 },
-          1024: { slidesPerView: 5, spaceBetween: 50 },
+          640: { slidesPerView: 2, spaceBetween: 30 },
+          1024: { slidesPerView: 3, spaceBetween: 50 },
+          1360: { slidesPerView: 4, spaceBetween: 50 },
+          1440: { slidesPerView: 5, spaceBetween: 50 },
+        }}
+        navigation={{
+          prevEl: ".custom-prev",
+          nextEl: ".custom-next",
         }}
       >
         {filteredCards.map((card, index) => (
           <SwiperSlide
             key={index}
             style={{ height: "auto" }}
+            className="pt-4"
           >
             <HotelCard
               city={card.City}

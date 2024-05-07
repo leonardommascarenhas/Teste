@@ -26,7 +26,7 @@ export default function AddressesList({ locations, onAddressClick }: AddressesLi
       {filteredAddresses.map(({ name, state }) => (
         <li
           key={name}
-          className="hover:bg-gray-100 p-3 flex items-center border-b border-gray-200"
+          className="hover:bg-gray-100 p-3 flex items-center border-b border-gray-200 md:border-0"
           onClick={() => onAddressClick(name)}
         >
           <FiMapPin className="mr-2" />
