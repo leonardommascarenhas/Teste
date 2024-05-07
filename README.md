@@ -1,4 +1,8 @@
+# Interface Netimoveis
 
+Este é um componente de aplicação web desenvolvido para permitir a busca dinâmica de imovéis de acordo com a entrada do usuário. 
+
+Este projeto é um desafio realizado por mim para Coodesh.
 
 ## Tecnologias e Ferramentas Utilizadas
 
@@ -57,3 +61,11 @@ Implementei um carrossel usando o Swiper, que permite deslizar pelos anúncios d
 
 ### Sugestões Inteligentes:
 Se a busca não corresponder exatamente ao que está disponível, o sistema sugere automaticamente a cidade mais próxima que tenha anúncios. É um pequeno toque que pode fazer uma grande diferença na busca!
+
+# Instalação do projeto
+
+## Instale as dependências
+npm install
+
+## Execute a aplicação
+npm run dev
